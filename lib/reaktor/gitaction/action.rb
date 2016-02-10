@@ -8,6 +8,7 @@ module GitAction
   class Action
     include R10K::Deploy
     attr_accessor :module_name,
+    :git_url,
     :branch_name,
     :puppetfile,
     :logger
@@ -16,6 +17,9 @@ module GitAction
       @options = options
       if module_name = options[:module_name]
         @module_name = module_name
+      end
+      if git_url = options[:git_url]
+        @git_url = git_url
       end
       if branch_name = options[:branch_name]
         @branch_name = branch_name
