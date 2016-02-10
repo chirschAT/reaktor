@@ -3,14 +3,13 @@
 module Reaktor
   module R10K
     class Puppetfile
-      GIT_URL = ENV['PUPPETFILE_GIT_URL']
       attr_accessor :branch, :mod, :git_url, :logger, :git_work_dir, :git_update_ref_msg
 
-      def initialize(branch, mod, logger)
+      def initialize(git_url, branch, mod, logger)
         logger.info("In #{self}")
         @branch = branch
         @mod = mod
-        @git_url = GIT_URL
+        @git_url = git_url
         @logger = logger
         @now = Time.now.strftime('%Y%m%d%H%M%S%L')
         @git_work_dir = File.expand_path("/var/tmp/puppetfile_repo_#{@now}")

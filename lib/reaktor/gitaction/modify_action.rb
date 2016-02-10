@@ -3,7 +3,7 @@ module GitAction
   class ModifyAction < Action
     def initialize(options = {})
       super(options)
-      @puppetfile = R10K::Puppetfile.new(self.branch_name, self.module_name, self.logger)
+      @puppetfile = R10K::Puppetfile.new(self.git_url, self.branch_name, self.module_name, self.logger)
       @puppetfile_dir = Git::WorkDir.new(@puppetfile.git_work_dir, @puppetfile.git_url)
       logger.info("In #{self}")
     end
