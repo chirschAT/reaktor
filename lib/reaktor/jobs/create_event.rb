@@ -26,6 +26,11 @@ module Reaktor
               action.cleanup
             end
           end
+          Notification::Notifier.instance.notification = "r10k deploy environment for #{branch_name} in progress..."
+          result = r10k_deploy_env branch_name
+          if result.exited?
+            Notification::Notifier.instance.notification = "r10k deploy environment for #{branch_name} finished"
+          end
         end
       end
     end
