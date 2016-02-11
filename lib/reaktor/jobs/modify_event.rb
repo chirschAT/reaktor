@@ -23,6 +23,9 @@ module Reaktor
               action.cleanup
             end
           end
+          Notification::Notifier.instance.notification = "r10k deploy module for #{module_name} in progress..."
+          r10k_deploy_module module_name
+          Notification::Notifier.instance.notification = "r10k deploy module for #{module_name} finished"
         end
       end
     end
